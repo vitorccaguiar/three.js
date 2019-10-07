@@ -47,6 +47,7 @@ Object.assign( Interpolant.prototype, {
 			seek: {
 
 				var right;
+				right = pp.length;
 
 				linear_scan: {
 
@@ -85,7 +86,6 @@ Object.assign( Interpolant.prototype, {
 						}
 
 						// prepare binary search on the right side of the index
-						right = pp.length;
 						break linear_scan;
 
 					}
