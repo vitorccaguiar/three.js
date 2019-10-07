@@ -9,12 +9,12 @@ import { _Math } from './Math.js';
  * The polar angle (phi) is measured from the positive y-axis. The positive y-axis is up.
  * The azimuthal angle (theta) is measured from the positive z-axiz.
  */
-
 function Spherical( radius, phi, theta ) {
 
 	this.radius = ( radius !== undefined ) ? radius : 1.0;
 	this.phi = ( phi !== undefined ) ? phi : 0; // polar angle
 	this.theta = ( theta !== undefined ) ? theta : 0; // azimuthal angle
+	this.eps = 0.000001;
 
 	return this;
 
@@ -51,8 +51,7 @@ Object.assign( Spherical.prototype, {
 	// restrict phi to be betwee EPS and PI-EPS
 	makeSafe: function () {
 
-		var EPS = 0.000001;
-		this.phi = Math.max( EPS, Math.min( Math.PI - EPS, this.phi ) );
+		this.phi = Math.max( this.eps, Math.min( Math.PI - this.eps, this.phi ) );
 
 		return this;
 
